@@ -12,6 +12,26 @@ snippet-add() {
     snippets[$1]="$2"
 }
 
+snippet-exists() {
+    [ -n "${snippets[$1]:-}" ];
+}
+
+snippet-edit() {
+    name="$1"
+    filename=$(mktemp)
+    finished=$(mktemp --dry-run)
+    tmux new-window bash -c "vim $filename; touch $finished"
+
+    # This can't handle a save and edit
+    #   to support this we some sort of signal
+    while [ ! -e "$finished" ]; do
+        sleep 0.1;
+    done;
+    content=$(cat $filename)
+    escaped_content=$(echo "$content" | sed "s/'/\\\\'/g" )
+    echo snippet-add "$name" $'$\''"$escaped_content""'" >> ~/.zsh-snippets
+}
+
 snippet-expand() {
     emulate -L zsh
     setopt extendedglob
@@ -21,6 +41,37 @@ snippet-expand() {
     LBUFFER+=${snippets[$MATCH]:-$MATCH}
 }
 zle -N snippet-expand
+
+snippet-expand-or-edit() {
+    emulate -L zsh
+    setopt extendedglob
+    local MATCH
+
+    LBUFFER=${LBUFFER%%(#m)[.\-+:|_a-zA-Z0-9]#}
+    if [ -z "${snippets[$MATCH]:-}" ]; then
+        snippet-edit "$MATCH"
+    fi;
+    source ~/.zsh-snippets
+    LBUFFER+=${snippets[$MATCH]:-$MATCH}
+}
+zle -N snippet-expand-or-edit
+
+snippet-edit-and-expand() {
+    emulate -L zsh
+    setopt extendedglob
+    local MATCH
+
+    LBUFFER=${LBUFFER%%(#m)[.\-+:|_a-zA-Z0-9]#}
+
+    echo $MATCH > /tmp/match
+    snippet-edit "$MATCH"
+    source ~/.zsh-snippets
+    LBUFFER+=${snippets[$MATCH]:-$MATCH}
+}
+zle -N snippet-edit-and-expand
+
+
+
 
 help-list-snippets(){
     local help="$(print "Add snippet:";
@@ -72,4 +123,3 @@ snippet-add tv     "| ${VISUAL:-${EDITOR:-nano}} "
 snippet-add tc     "| cut "
 snippet-add tu     "| uniq "
 snippet-add tx     "| xargs "
-
