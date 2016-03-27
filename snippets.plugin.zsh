@@ -5,6 +5,7 @@
 # use: add-snippet <key> <expansion>
 # then, with cursor just past <key>, run snippet-expand
 
+snippets_file=~/.zsh-snippets
 typeset -Ag snippets
 
 snippet-add() {
@@ -20,7 +21,7 @@ snippet-edit() {
     name="$1"
     filename=$(mktemp)
     finished=$(mktemp --dry-run)
-    tmux new-window bash -c "vim $filename; touch $finished"
+    tmux new-window bash -c "vim -c 'startinsert' $filename; touch $finished"
 
     # This can't handle a save and edit
     #   to support this we some sort of signal
@@ -29,7 +30,7 @@ snippet-edit() {
     done;
     content=$(cat $filename)
     escaped_content=$(echo "$content" | sed "s/'/\\\\'/g" )
-    echo snippet-add "$name" $'$\''"$escaped_content""'" >> ~/.zsh-snippets
+    echo snippet-add "$name" $'$\''"$escaped_content""'" >> $snippets_file
 }
 
 snippet-expand() {
@@ -51,7 +52,7 @@ snippet-expand-or-edit() {
     if [ -z "${snippets[$MATCH]:-}" ]; then
         snippet-edit "$MATCH"
     fi;
-    source ~/.zsh-snippets
+    source $snippets_file
     LBUFFER+=${snippets[$MATCH]:-$MATCH}
 }
 zle -N snippet-expand-or-edit
@@ -65,13 +66,10 @@ snippet-edit-and-expand() {
 
     echo $MATCH > /tmp/match
     snippet-edit "$MATCH"
-    source ~/.zsh-snippets
+    source $snippets_file
     LBUFFER+=${snippets[$MATCH]:-$MATCH}
 }
 zle -N snippet-edit-and-expand
-
-
-
 
 help-list-snippets(){
     local help="$(print "Add snippet:";
