@@ -5,8 +5,12 @@
 # use: add-snippet <key> <expansion>
 # then, with cursor just past <key>, run snippet-expand
 
-snippets_should_log=
+snippets_should_log=yes # empty to prevent logging
+
 snippets_file=~/.zsh-snippets
+#snippet_edit_func=snippet-editor-edit
+snippet_edit_func=snippet-shell-edit
+
 typeset -Ag snippets
 
 snippet-log() {
@@ -48,36 +52,40 @@ zle -N snippet-line-restore
 set -A snippet_shell_defining
 snippet-shell-edit() {
     emulate -L zsh
-    parse-snippet
-    snippet_shell_defining+=( "$snippet_match" )
-    LBUFFER=$snippet_new_lbuffer
-    snippet_shell_before_snippet="$LBUFFER"
-    zle beginning-of-line
-    zle kill-line
+    setopt extendedglob
+    snippet_shell_defining="$1"
+    snippet_shell_before_snippet="$BUFFER"
+    snippet-log "Setting buffer to expansion of $snippet_match"
+    new_buffer="$snippets[$1]"
+    BUFFER=$new_buffer
+    zle -N accept-line snippet-shell-edit-finished
 }
 zle -N snippet-shell-edit
-snippet-shell-finished() {
+
+snippet-shell-edit-finished() {
     emulate -L zsh
     local new_snippet
     local defining
 
-    defining=$snippet_shell_defining[-1]
-    snippet_shell_defining[-1]=()
+    defining=$snippet_shell_defining
+    snippet_shell_defining=
 
-    new_snippet="$BUFFER"
-    snippet-write "$defining" "$new_snippet"
+    snippet-write "$defining" "$BUFFER"
     source $snippets_file
-    LBUFFER+="$snippet_shell_before_snippet"
-    LBUFFER+="$new_snippet"
+    zle -N accept-line .accept-line
+    LBUFFER="$snippet_shell_before_snippet"
+
+    snippet-edit-finished-callback
 }
 zle -N snippet-shell-finished
 
 
-zle -N snippet-restore
 
 snippet-write () {
     name=$1
     content=$2
+
+    snippet-log "Setting snippet $name to $content"
 
     escaped_content=$(echo "$content" | sed "s/'/\\\\'/g" )
     echo snippet-add "$name" $'$\''"$escaped_content""'" >> $snippets_file
@@ -96,42 +104,18 @@ snippet-string-expand () {
     echo "${snippets[$snippet_match]:-$snippet_match}"
 }
 
-snippet-editor-expand-or-edit() {
+
+snippet-expand-or-edit() {
     parse-snippet
     LBUFFER=$snippet_new_lbuffer
     if [ -z "${snippets[$snippet_match]:-}" ]; then
-        snippet-editor-edit "$snippet_match"
-    fi;
-    source $snippets_file
-    LBUFFER+=$(snippet-string-expand)
-}
-zle -N snippet-editor-expand-or-edit
-
-snippet-expand-or-edit-private () {
-
-
-}
-
-snippet-shell-expand-or-edit() {
-    emulate -L zsh
-    setopt extendedglob
-
-    parse-snippet
-    LBUFFER=$snippet_new_lbuffer
-    snippet-editor-edit "$snippet_match"
-
-    if [ -z "${snippets[$snippet_match]:-}" ]; then
-        snippet-editor-edit "$snippet_match"
+        $snippet_edit_func "$snippet_match"
+    else
+        snippet-edit-finished-callback
     fi;
 
-    source "$snippets_file"
-    LBUFFER+=${snippets[$snippet_match]:-$snippet_match}
 }
 zle -N snippet-expand-or-edit
-
-
-
-
 
 snippet-save-last() {
     name="$1"
@@ -151,18 +135,21 @@ snippet-edit-and-expand() {
 
     if [ -z "$BUFFER" ]; then
         # Useful binding to re-edit the last snippet if it was not right
-        snippet-editor-edit "$snippet_match"
+        $snippet_edit_func "$snippet_match"
         return
     fi;
 
     parse-snippet
     LBUFFER=$snippet_new_lbuffer
-    snippet-editor-edit "$snippet_match"
+    $snippet_edit_func "$snippet_match" snippet-edit-finished-callback
+}
+zle -N snippet-edit-and-expand
 
+snippet-edit-finished-callback() {
+    snippet-log "Snippet edit finished"
     source $snippets_file
     LBUFFER+=${snippets[$snippet_match]:-$snippet_match}
 }
-zle -N snippet-edit-and-expand
 
 parse-snippet(){
     # Wouldn't it be great if we could return
@@ -172,6 +159,7 @@ parse-snippet(){
 
     snippet_new_lbuffer=${LBUFFER%%(#m)[.\-+:|_a-zA-Z0-9]#}
     snippet_match=$MATCH
+    snippet-log "Found snippet $snippet_match"
 }
 
 help-list-snippets(){
