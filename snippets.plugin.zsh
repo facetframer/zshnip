@@ -5,7 +5,7 @@
 # use: add-snippet <key> <expansion>
 # then, with cursor just past <key>, run snippet-expand
 
-snippets_should_log=yes # empty to prevent logging
+snippets_should_log= # empty to prevent logging
 
 snippets_file=~/.zsh-snippets
 #snippet_edit_func=snippet-editor-edit
