@@ -5,8 +5,15 @@
 # use: add-snippet <key> <expansion>
 # then, with cursor just past <key>, run snippet-expand
 
+snippets_should_log=
 snippets_file=~/.zsh-snippets
 typeset -Ag snippets
+
+snippet-log() {
+    if [ -n "${snippets_should_log:-}" ]; then
+        echo >&2 "$*"
+    fi;
+}
 
 snippet-add() {
     # snippet-add <key> <expansion>
@@ -19,7 +26,9 @@ snippet-exists() {
 
 snippet-editor-edit() {
     name="$1"
+    snippet-log "Editing $name"
     filename=$(mktemp)
+    echo "$snippets[$snippet_match]" > "$filename"
     finished=$(mktemp --dry-run)
     tmux new-window bash -c "vim -c 'startinsert' $filename; touch $finished"
 
