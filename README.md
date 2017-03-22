@@ -54,6 +54,8 @@ Defining snippets can be problematic:
 
 # License
 
-LGPLv3.
-This feels like more of application than a library so a copyleft license seems like a good choice.
-However, if there is a compelling reasons to place this under a more permissive license this would not be difficult.
+LGPLv3 see `LICENSE` for details.
+
+Copyleft licenses can be controversial.
+This project feels like more of application than a library so a copyleft license seems like a good choice.
+If there is a compelling reasons to place this under a more permissive license this would not be difficult.
