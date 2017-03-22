@@ -220,6 +220,7 @@ play-examples () {
     sleep 3;
     message "'Credits...'"
 
+    sleep 3;
     clear-messages
 }
 
