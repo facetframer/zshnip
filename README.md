@@ -1,14 +1,43 @@
-Install
--------
+# Zshnip
 
-For the lazy:
+A system for zsh.
 
-    git clone https://github.com/willghatch/zsh-snippets.git
-    echo "source zsh-snippets/snippets.plugin.zsh" >> ~/.zshrc
+# Attribution
 
-Better, use [zgen](https://github.com/tarjoilija/zgen) or antigen.  Here is how to do it with zgen:
+This is an extended version of William G Hatch (willghatch@gmail.com)
+[original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on various forums.
+The define as you go features were added by facet@facetframer.com.
 
-    zgen load willghatch/zsh-snippets
+# Prior work and similar projects
+
+https://github.com/1ambda/zsh-snippets is another extension of willghatch's library.
+
+# Installation
+
+Using zplug
+
+```
+    zplug facetframer/zshnip
+```
+
+Using zgen
+
+```
+    zgen load facetframer/zshnip
+```
+
+Raw installation
+
+```
+    git clone https://github.com/facetframer/zshnip.git
+    echo "source zship/zshnip.plugin.zsh" >> ~/.zshrc
+```
+
+
+Manually create keybindings for defining snippets
+
+bindkey '\ej' snippet-expand-or-edit
+bindkey '\ee' snippet-edit-and-expand
 
 
 The Magic
