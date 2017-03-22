@@ -1,6 +1,6 @@
 # Zshnip
 
-A system for zsh.
+A snippet system for [zsh](http://zsh.sourceforge.net/). Create new snippets as you go.
 
 # Attribution
 
