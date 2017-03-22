@@ -6,9 +6,9 @@ A snippet system for [zsh](http://zsh.sourceforge.net/). Create new snippets as 
 
 This is an extended version of William G Hatch (willghatch@gmail.com)
 [original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on various forums.
-The define as you go features were added by facet@facetframer.com.
+The define-as-you-go features were added by facet@facetframer.com.
 
-# Prior work and similar projects
+# Similar projects
 
 https://github.com/1ambda/zsh-snippets is another extension of willghatch's library.
 
@@ -36,8 +36,10 @@ Raw installation
 
 Manually create keybindings for defining snippets
 
+```
 bindkey '\ej' zshnip-expand-or-edit
 bindkey '\ee' zshnip-edit-and-expand
+```
 
 # Usage
 
