@@ -62,7 +62,7 @@ Defining snippets can be problematic:
 
 # License
 
-LGPLv3 (see `LICENSE` for details.)
+LGPLv3 (see [LICENSE](LICENSE) for details.)
 
 Copyleft licenses can be controversial.
 This project feels like more of application than a library so a copyleft license seems like a good choice.
