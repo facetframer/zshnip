@@ -122,7 +122,7 @@ play-define-as-you-go () {
     sleep 2;
 
     message ""
-    message "If a snippet is not defined a prompt is popped up for you to define it."
+    message "If a snippet is not defined then a prompt is displayed for you to define it."
     sleep 1
     run-type 1 "Zshnip "
     message "'   ** KEYPRESS: Return ** '"

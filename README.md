@@ -6,7 +6,7 @@ A snippet system for [zsh](http://zsh.sourceforge.net/). Create new snippets as 
 
 # Attribution
 
-This is an extended version of William G Hatch (willghatch@gmail.com)
+This is an extended version of William G Hatch's (willghatch@gmail.com)
 [original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on various forums.
 The define-as-you-go features were added by facet@facetframer.com.
 
