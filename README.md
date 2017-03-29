@@ -16,7 +16,7 @@ https://github.com/1ambda/zsh-snippets is another extension of willghatch's libr
 
 # Installation
 
-Using zplug
+Using *zplug*
 
 ```
     source /usr/share/zplug/init.zsh
@@ -25,7 +25,7 @@ Using zplug
     zplug load
 ```
 
-Using zgen
+Using *zgen*
 
 ```
     zgen load facetframer/zshnip
@@ -36,11 +36,11 @@ Raw installation
 
 ```
     git clone https://github.com/facetframer/zshnip.git
-    echo "source zship/zshnip.plugin.zsh" >> ~/.zshrc
+    echo "source zshnip/zshnip.plugin.zsh" >> ~/.zshrc
 ```
 
 
-Manually create keybindings for defining snippets
+Manually create key-bindings for defining snippets
 
 ```
 bindkey '\ej' zshnip-expand-or-edit
@@ -62,7 +62,7 @@ Defining snippets can be problematic:
 
 # License
 
-LGPLv3 see `LICENSE` for details.
+LGPLv3 (see `LICENSE` for details.)
 
 Copyleft licenses can be controversial.
 This project feels like more of application than a library so a copyleft license seems like a good choice.
