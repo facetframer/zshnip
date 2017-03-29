@@ -4,19 +4,24 @@ set -o nounset
 set -o pipefail
 
 here="$(abspath $(dirname ${BASH_SOURCE[0]}))"
-source $here/util.sh
+source "$here/util.sh"
+source "$here/zsh-animate.sh"
+log "$0 started"
 
-TMUX=/tmp/mux
+workdir=$(mktemp -d)
+finished_file=$workdir/finished
 
-# Kill off old sessions
-tmux -S /tmp/mux kill-server || true
-sleep 1;
+TMUX=$(animation-init-tmux)
+
+tmux -S $TMUX new-window -n test $here/narration-zsh.sh
+
+# Start recording in the background
+animation-record "$here/animation.json"
 
 # Start animation thread
-$here/animation-actions.sh &
+$here/animation-actions.sh "$workdir" &
 
-# start a zsh
-tmux -S /tmp/mux new-session -d
-tmux -S /tmp/mux new-window -n test $here/narration-zsh.sh
+tmux -S $TMUX attach
 
-tmux -S /tmp/mux attach
+
+rm -rf "$workdir"
