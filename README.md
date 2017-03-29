@@ -19,13 +19,17 @@ https://github.com/1ambda/zsh-snippets is another extension of willghatch's libr
 Using zplug
 
 ```
+    source /usr/share/zplug/init.zsh
     zplug facetframer/zshnip
+    zplug install
+    zplug load
 ```
 
 Using zgen
 
 ```
     zgen load facetframer/zshnip
+    zgen init
 ```
 
 Raw installation
@@ -45,7 +49,7 @@ bindkey '\ee' zshnip-edit-and-expand
 
 # Usage
 
-Type your snippet alias, run `M-x zshnip-expand-or-edit`, type what your new snippet should be. 
+Type your snippet alias, run `M-x zshnip-expand-or-edit`, type what your new snippet should be.
 After this your snippet is defined and next time you run `zshnip-expand-or-edit` it will use your definition.
 
 # Motivation
