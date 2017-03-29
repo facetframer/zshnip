@@ -15,8 +15,12 @@ typeset -Ag snippets
 
 zshnip-log() {
     if [ -n "${zshnip_should_log:-}" ]; then
-        echo >&2 "$*"
+        zshnip-warn "$*"
     fi;
+}
+
+zshnip-warn() {
+    echo >&2 "zshnip: $*"
 }
 
 zshnip-add() {
@@ -59,7 +63,7 @@ zshnip-shell-edit() {
     new_buffer="$snippets[$1]"
     BUFFER=$new_buffer
     OLDPROMPT="$PROMPT"
-    PROMPT="$PROMPT DEFINING SNIPPET: $snippet_shell_defining > "
+    PROMPT="$PROMPT DEFINING SNIPPET: $zshnip_shell_defining > "
     zle reset-prompt
     PROMPT="$OLDPROMPT"
     zle -N accept-line zshnip-shell-edit-finished
@@ -71,7 +75,7 @@ zshnip-shell-edit-finished() {
     local new_snippet
     local defining
 
-    defining="$snippet_shell_defining"
+    defining="$zshnip_shell_defining"
     zshnip_shell_defining=
 
     zshnip-write "$defining" "$BUFFER"
@@ -96,7 +100,7 @@ zshnip-write () {
     name=$1
     content=$2
 
-    zshnip-log "Setting snippet $name to $content"
+    zshnip-log "Setting snippet '$name' to '$content'"
 
     escaped_content=$(echo "$content" | sed "s/'/\\\\'/g" )
     echo zshnip-add "$name" $'$\''"$escaped_content""'" >> $snippets_file
@@ -122,7 +126,7 @@ zshnip-expand-or-edit() {
     if [ -z "${snippets[$snippet_match]:-}" ]; then
         $zshnip_edit_func "$snippet_match"
     else
-        snippet-edit-finished-callback
+        zshnip-edit-finished-callback
     fi;
 
 }
@@ -146,7 +150,7 @@ zshnip-edit-and-expand() {
 
     zshnip-parse-snippet
     LBUFFER=$snippet_new_lbuffer
-    $zshnip_edit_func "$snippet_match" snippet-edit-finished-callback
+    $zshnip_edit_func "$snippet_match" zshnip-edit-finished-callback
 }
 zle -N zshnip-edit-and-expand
 
