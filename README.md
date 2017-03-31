@@ -1,6 +1,6 @@
 # Zshnip
 
-A snippet system for [zsh](http://zsh.sourceforge.net/). Create new snippets as you go.
+A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as you go](https://facetframer.com/dayg).
 
 [![asciicast](https://asciinema.org/a/3fz3tnk2turajry6m8rpyq4j4.png)](https://asciinema.org/a/3fz3tnk2turajry6m8rpyq4j4)
 
@@ -59,6 +59,17 @@ Defining snippets can be problematic:
 1. Learning other people's snippets is boring
 1. You only know what snippets you want while you are typing them, not later
 1. Going to an editor to define a snippet can interrupt you
+
+# Likely Questions: Can't you just this with aliases?
+
+Certainly, you can even supports pipes etc in your aliases using global aliases (`alias -g g='| grep '`),
+you could also perhaps write a wrapper about `alias` to ensure that it saves to your zshrc, and
+potentially use something like https://github.com/jarmo/expand-aliases-oh-my-zsh to expand them.
+
+Using snippets have some benefits
+
+ - You can verify that snippets expand to what you want before running them (useful if you have a *lot* of snippets)
+ - The define-as-you-go features have various [benefits](define-as-you-go.md).
 
 # License
 
