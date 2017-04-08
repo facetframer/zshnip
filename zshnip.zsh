@@ -66,6 +66,7 @@ zshnip-shell-edit() {
     PROMPT="$PROMPT DEFINING SNIPPET: $zshnip_shell_defining > "
     zle reset-prompt
     PROMPT="$OLDPROMPT"
+    zle -A accept-line _zshnip_old_accept_line
     zle -N accept-line zshnip-shell-edit-finished
 }
 zle -N zshnip-shell-edit
@@ -82,7 +83,7 @@ zshnip-shell-edit-finished() {
 
     zshnip-source
 
-    zle -N accept-line .accept-line
+    zle -N accept-line _zshnip_old_accept_line
     LBUFFER="$zshnip_shell_before_snippet"
     zle reset-prompt
 
