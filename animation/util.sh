@@ -6,6 +6,10 @@ if [ -e "$here/debug" ]; then
     exec 2>> /tmp/log
 fi;
 
+is-debug-mode () {
+    [ -e "$here/debug" ]
+}
+
 log () {
     echo "$*" >> /tmp/log
 }

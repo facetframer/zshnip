@@ -12,11 +12,79 @@ workdir="$1"
 finished_file=$workdir/finished
 animation-attach "$workdir"
 
+play-interactive-banner () {
+    run-type 1 "wt"
+    tab
+    sleep 2;
+    run-type 1 "zs"
+    sleep 1
+    tab
+    sleep 1;
+    run-type 1 "Zshnip"
+    sleep 0.5;
+    run ""
+    sleep 1;
+    run ""
+    run-type 1 "zs"
+    sleep 1;
+    tab
+    sleep 0.7;
+    run-type 1.5 " is a tool to:"
+    run ""
+
+    sleep 1
+    run-type 1 "one"
+    sleep 1
+    tab
+    sleep 1
+    run
+
+    sleep 1
+    run-type 1 "two"
+    sleep 1
+    tab
+    sleep 1
+    run
+
+    sleep 1
+    run-type 1 "three"
+    sleep 1
+    tab
+    run
+
+    sleep 2
+
+    run " * All without..."
+    run
+
+    sleep 1
+    run-more "      EVER "
+    sleep 1
+    run-more "HAVING "
+    sleep 1
+    run-more "TO "
+    sleep 0.3
+    run-more "DO "
+    sleep 0.3
+    run-more "ANY "
+    sleep 0.8
+    run-more "CONFIGURATION"
+    sleep 2
+    run-more "*"
+
+    run
+    run
+    run
+    run "                * apart from installing zshnip"
+
+    sleep 3
+}
+
+
 
 play-banner () {
     message-more "'Welcome to Zshnip'"
     sleep 2
-    message ""
     message ""
     message "A tool to:"
     sleep 2
@@ -50,22 +118,28 @@ play-banner () {
     message "'                * apart from installing zshnip'"
 
     sleep 3
-
-    clear-messages
-
 }
 
 play-attribution () {
+
     message ""
     message ""
     message ""
     message ""
-    message "'By facet (http://www.facetframer.com/ -- facet@facetframer.com)'"
-    message "'      Copyright 2017 -- Licensed under LGPLv3'"
+    message "'By facet (http://www.facetframer.com/'"
+    message "'         -- facet@facetframer.com)'"
+    message "'    Copyright 2017 -- Licensed under LGPLv3'"
     message ""
     message ""
-    message "'Adapted from 'willghatch\'s' https://github.com/willghatch/zsh-snippets '"
+    message "'Adapted from 'willghatch\'s'  '"
+    message "'         -- https://github.com/willghatch/zsh-snippets '"
     message "'  (public domain) -- Adapted from code in forums'"
+    # message "15"
+    # message "16"
+    # message "17"
+    # message "18"
+    # message "19"
+    # message "20"
     sleep 7
 
     clear-messages
@@ -73,15 +147,15 @@ play-attribution () {
 }
 
 play-introduction-text () {
-    message-more "'Zshnip extends zsh by defining *snippets*: '"
+    message "'Zshnip extends zsh by defining *snippets*: '"
     sleep 2
-    message "blocks of text that you"
-    message "  can quickly paste into your shell."
+    message "blocks of text that you can quickly paste into your shell."
     message ""
 
     sleep 3
 
-    message-more "'You expand your snippet by running zshnip-expand-or-edit (using M-x)'"
+    message "'You expand your snippet by running'"
+    message "'zshnip-expand-or-edit (using M-x)'"
     sleep 2
 }
 
@@ -89,7 +163,7 @@ play-introduction-snippet () {
     sleep 1
     run-type 1 "echo lv"
     run-word "$(echo -e '\ex')"
-    run-type 4 "zshnip-expand-or-edit"
+    run-type 1 "zshnip-expand-or-edit"
     sleep 1;
     run ""
 
@@ -122,7 +196,8 @@ play-define-as-you-go () {
     sleep 2;
 
     message ""
-    message "If a snippet is not defined then a prompt is displayed for you to define it."
+    message "If a snippet is not defined then a prompt is displayed"
+    message "for you to define it."
     sleep 1
     run-type 1 "Zshnip "
     message "'   ** KEYPRESS: Return ** '"
@@ -160,15 +235,18 @@ play-benefits () {
     sleep 2
     message "'   You need to remember less -- just guess'"
     sleep 1
-    message "'        If you are wrong the new binding is probably better'"
+    message "'        If you are wrong the new binding'"
+    message "'         is probably better'"
     sleep 1;
     message "'   You actually get around to defining snippets'"
     sleep 2
     message "'   Defining snippets is faster'"
     sleep 2
-    message "'        No need to find configurations files and open them'"
+    message "'        No need to find configurations files'"
+    message "'        and open them'"
     sleep 2
-    message "'   Your capacity to go down an automation rabbit-hole is reduced'"
+    message "'   Your capacity to go down an automation rabbit-hole'"
+    message "'   is reduced'"
     sleep 2
     message "'       You have a programming tool of reduced power'"
     sleep 2
@@ -200,10 +278,15 @@ play-examples () {
     sleep 1
     tab
     sleep 1
-    run-word zsh
+    run-type 1 "zsh "
+    sleep 1
+    run-word "l"
+    sleep 1
+    tab
     sleep 1
     run
     sleep 1
+    run q
     run clear
     sleep 1
 
@@ -267,9 +350,6 @@ play-examples () {
     tab
     sleep 1
     run-word "$(echo -e '\x03')"
-
-    sleep 3
-    message "'Credits...'"
     message ""
 
     sleep 3
@@ -291,12 +371,19 @@ play-credits () {
 }
 
 close-shell () {
-tmux send-keys -t test.1 'exit
+tmux send-keys -t "$command_pane" 'exit
 '
 }
 
-sleep 1
-play-banner
+sleep 1;
+#play-banner
+tmux -S $TMUX select-window -t pseudoshell
+animate-set-command-pane "pseudoshell.0"
+sleep 1;
+play-interactive-banner
+sleep 1;
+spawn-narration-window;
+
 play-attribution
 play-introduction-text
 split-command-window

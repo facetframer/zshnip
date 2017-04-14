@@ -13,15 +13,17 @@ finished_file=$workdir/finished
 
 TMUX=$(animation-init-tmux)
 
-tmux -S $TMUX new-window -n test $here/narration-zsh.sh
+tmux -S $TMUX new-window -n pseudoshell "$here/pseudo-shell-zsh.sh"
 
 # Start recording in the background
-animation-record "$here/animation.json"
+sleep 1;
 
 # Start animation thread
 $here/animation-actions.sh "$workdir" &
 
-tmux -S $TMUX attach
+animation-record "Zshnip snippet tool" "$here/animation.json"
 
+cat animation.json | jq  '.stdout=.stdout[:-2]' > new-animation.json
+mv new-animation.json animation.json
 
 rm -rf "$workdir"

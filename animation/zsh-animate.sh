@@ -2,13 +2,19 @@
 
 here="$(dirname ${BASH_SOURCE[0]})"
 
-narration_pane=test.0
+narration_pane=narration.0
 # Where we should send commands
 command_pane=
 
 message () {
 tmux -S $TMUX send-keys -t "$narration_pane" "echo $*
 "
+}
+
+
+animate-set-command-pane (){
+    command_pane="$1"
+
 }
 
 message-more () {
@@ -52,12 +58,20 @@ run () {
 "
 }
 
+run-more () {
+    tmux -S $TMUX send-keys -t "$command_pane" "$*"
+}
+
 run-word () {
     tmux -S $TMUX send-keys -t "$command_pane" "$*"
 }
 
 tab () {
     tmux -S "$TMUX" send-keys -t "$command_pane" $(echo -e '\ej')
+}
+
+message-tab () {
+    tmux -S "$TMUX" send-keys -t "$narration_pane" $(echo -e '\ej')
 }
 
 animation-init-tmux () {
@@ -70,7 +84,7 @@ animation-init-tmux () {
     sleep 1;
 
     # start a zsh
-    tmux -S $TMUX new-session -d
+    tmux -S $TMUX new-session -d -y 10 -x 10
     echo "$TMUX"
 }
 
@@ -94,6 +108,10 @@ animation-wait-until-finished () {
 
 animation-cleanup-tmux () {
     # This is necessary to get asciinema to cleanly exit (i.e not truncate recording
+
+    #ps -ef | grep asciinema | awk '{ print $2 }' | xargs -n 1 kill -INT
+
+
     if [ -n "$(tmux -S "$TMUX" list-client)" ]; then
         tmux -S "$TMUX" list-client  | cut -d: -f 1  | xargs -n 1 tmux -S "$TMUX" detach-client -t
     fi;
@@ -105,7 +123,9 @@ animation-cleanup-tmux () {
 
 animation-record () {
     # Start recording the animation in the background
-    asciinema rec -c "tmux -S $TMUX attach" "$1" >/dev/null 2>&1  &
+    log "RECORDING"
+    asciinema rec -t "$1" -c "tmux -S $TMUX attach" "$2"
+    log "FINISHED"
 }
 
 animation-watch () {

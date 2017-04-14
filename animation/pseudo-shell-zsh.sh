@@ -1,6 +1,7 @@
 #!/bin/bash
 set -o nounset
 set -o pipefail
+# A zsh which doesn't run commands but has a full zle
 
 here="$(dirname ${BASH_SOURCE[0]})"
 source $here/util.sh
@@ -30,20 +31,19 @@ PROMPT="ZSH> "
 source /usr/share/zplug/init.zsh
 $install_command
 
-zshnip-add lv $'I love '
-zshnip-add l $' | less'
-zshnip-add g $' | grep '
-zshnip-add gs $'git status '
-zshnip-add s $' | sort '
-zshnip-add xa $' | xargs '
-zshnip-add w2 $' | awk \'{ print \$2 } \' '
-zshnip-add xak $' | xargs -n 1 kill -9 '
-zshnip-add zp $'\$\(ps -ef | fzf-tmux | awk \'{ print \$2 }\'\)'
+zshnip-add wt $'Welcome to '
+zshnip-add one $' * Make using zsh more fun'
+zshnip-add two $' * Reduce the number of mistakes you make'
+zshnip-add three $' * Allow you to do more complicated things'
+
+donothing () {
+   zle send-break
+}
+
+zle -N accept-line donothing
 
 snippets_file=$config/snippets
 bindkey '\ej' zshnip-expand-or-edit
-bindkey '\ee' zshnip-edit
-bindkey -s '\er' 'source ../zshnip.zsh\n'
 EOF
 
 ZDOTDIR=$config /usr/bin/zsh -i
