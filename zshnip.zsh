@@ -97,7 +97,9 @@ _zshnip-shell-edit-accept-line() {
     _zshnip-edit-finished-callback "$defined"
 
     if [[ "0" == "${#_zshnip_defining}" ]]; then
-        zle -N accept-line _zshnip_old_accept_line
+
+        zle -A _zshnip_old_accept_line accept-line
+        _zshnip-log "Restoring accept-line: ${widgets[accept-line]}"
     fi;
 }
 zle -N zshnip-shell-finished
