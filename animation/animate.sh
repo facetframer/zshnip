@@ -4,13 +4,28 @@ set -o nounset
 set -o pipefail
 
 
-title=$1
-action_file=$2
-output_file=$3
 
 here="$(dirname ${BASH_SOURCE[0]})"
 source "$here/util.sh"
 source "$here/zsh-animate.sh"
+source "$here/tmux-consistency.sh"
+
 setup-logs
-$here/spawn-term.sh "$here/animate-init.sh" "$title" "$action_file" "$output_file"
+
+title=$1
+action_file=$2
+output_file=$3
+workdir=$(mktemp -d)
+
+finished_file="$workdir/finished"
+TMUX=$workdir/mux
+
+$here/spawn-term.sh "$here/animate-init.sh" "$title" "$action_file" "$output_file" "$workdir"
 tail -f /tmp/log &
+
+tmux-consistency-init
+
+animation-wait-until-finished "$workdir"
+tmux-consistency-show-errors
+
+

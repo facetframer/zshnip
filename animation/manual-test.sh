@@ -45,4 +45,3 @@ test-steps () {
 test-steps &
 tail_pid=$!
 animation-xwindow-watch
-animation-wait-until-finished

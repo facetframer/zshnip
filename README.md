@@ -2,7 +2,6 @@
 
 A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as you go](https://facetframer.com/dayg).
 
-
 ## Presentation
 
 ![asciicast](https://asciinema.org/a/3fz3tnk2turajry6m8rpyq4j4.png)
@@ -75,6 +74,12 @@ Using snippets have some benefits
 
  - You can verify that snippets expand to what you want before running them (useful if you have a *lot* of snippets)
  - The define-as-you-go features have various [benefits](define-as-you-go.md).
+
+# Testing
+
+The code for generating the [feature gallery](GALLERY.md) also performs consistency testing.
+Combining testing and generation of documentation like this has various benefits (see *doctest*).
+To run these tests run `animation/record-gallery.sh`
 
 # License
 

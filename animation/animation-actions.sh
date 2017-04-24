@@ -399,4 +399,3 @@ play-credits
 sleep 1
 
 animation-finished
-animation-wait-until-finished

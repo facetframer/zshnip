@@ -11,11 +11,11 @@ log "$0 started"
 title=$1
 action_file=$2
 output_file=$3
+workdir=$4
 
-workdir=$(mktemp -d)
 finished_file=$workdir/finished
 
-TMUX=$(animation-init-tmux)
+TMUX=$(animation-init-tmux "$workdir")
 
 tmux -S $TMUX new-window -n pseudoshell "$here/pseudo-shell-zsh.sh"
 
@@ -30,4 +30,3 @@ animation-record "$title" "$here/animation.json"
 cat animation.json | jq  '.stdout=.stdout[:-2]' > new-animation.json
 mv new-animation.json "$output_file"
 
-rm -rf "$workdir"

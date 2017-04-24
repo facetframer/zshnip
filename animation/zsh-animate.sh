@@ -79,7 +79,7 @@ message-tab () {
 }
 
 animation-init-tmux () {
-    workdir=$(mktemp -d)
+    workdir=$1
     finished_file=$workdir/finished
     TMUX=$workdir/mux
 
@@ -120,16 +120,14 @@ animation-cleanup-tmux () {
         tmux -S "$TMUX" list-client  | cut -d: -f 1  | xargs -n 1 tmux -S "$TMUX" detach-client -t
     fi;
 
-    sleep 10;
+    sleep 2;
 
     tmux -S "$TMUX" kill-server
 }
 
 animation-record () {
     # Start recording the animation in the background
-    log "RECORDING"
     asciinema rec -t "$1" -c "tmux -S $TMUX attach" "$2"
-    log "FINISHED"
 }
 
 animation-watch () {
