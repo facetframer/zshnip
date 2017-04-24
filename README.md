@@ -2,7 +2,12 @@
 
 A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as you go](https://facetframer.com/dayg).
 
-[![asciicast](https://asciinema.org/a/3fz3tnk2turajry6m8rpyq4j4.png)](https://asciinema.org/a/3fz3tnk2turajry6m8rpyq4j4)
+
+## Presentation
+
+![asciicast](https://asciinema.org/a/3fz3tnk2turajry6m8rpyq4j4.png)
+
+[Gallery of features](GALLERY.md) (animated gifs)
 
 # Attribution
 

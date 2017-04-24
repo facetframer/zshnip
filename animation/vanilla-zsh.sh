@@ -34,6 +34,7 @@ zshnip-add lv $'I love '
 zshnip-add l $' | less'
 zshnip-add g $' | grep '
 zshnip-add gs $'git status '
+zshnip-add edit $'pre-existing snippet'
 zshnip-add s $' | sort '
 zshnip-add xa $' | xargs '
 zshnip-add w2 $' | awk \'{ print \$2 } \' '
@@ -42,7 +43,7 @@ zshnip-add zp $'\$\(ps -ef | fzf-tmux | awk \'{ print \$2 }\'\)'
 
 snippets_file=$config/snippets
 bindkey '\ej' zshnip-expand-or-edit
-bindkey '\ee' zshnip-edit
+bindkey '\ee' zshnip-edit-and-expand
 bindkey -s '\er' 'source ../zshnip.zsh\n'
 EOF
 

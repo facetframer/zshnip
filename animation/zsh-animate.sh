@@ -70,6 +70,10 @@ tab () {
     tmux -S "$TMUX" send-keys -t "$command_pane" $(echo -e '\ej')
 }
 
+edit-key () {
+    tmux -S "$TMUX" send-keys -t "$command_pane" $(echo -e '\ee')
+}
+
 message-tab () {
     tmux -S "$TMUX" send-keys -t "$narration_pane" $(echo -e '\ej')
 }

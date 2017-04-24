@@ -8,6 +8,10 @@ source "$here/util.sh"
 source "$here/zsh-animate.sh"
 log "$0 started"
 
+title=$1
+action_file=$2
+output_file=$3
+
 workdir=$(mktemp -d)
 finished_file=$workdir/finished
 
@@ -19,11 +23,11 @@ tmux -S $TMUX new-window -n pseudoshell "$here/pseudo-shell-zsh.sh"
 sleep 1;
 
 # Start animation thread
-$here/animation-actions.sh "$workdir" &
+bash "$action_file" "$workdir" &
 
-animation-record "Zshnip snippet tool" "$here/animation.json"
+animation-record "$title" "$here/animation.json"
 
 cat animation.json | jq  '.stdout=.stdout[:-2]' > new-animation.json
-mv new-animation.json animation.json
+mv new-animation.json "$output_file"
 
 rm -rf "$workdir"
