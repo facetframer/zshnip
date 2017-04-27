@@ -50,13 +50,14 @@ play-interactive-banner () {
     run-type 1 "three"
     sleep 1
     tab
+    sleep 1
     run
 
-    sleep 2
+    sleep 1
 
-    run " * All without..."
+    run-type 1 " * All without..."
+    sleep 1
     run
-
     sleep 1
     run-more "      EVER "
     sleep 1
@@ -73,8 +74,11 @@ play-interactive-banner () {
     run-more "*"
 
     run
+    sleep 0.5
     run
+    sleep 0.5
     run
+    sleep 0.5
     run "                * apart from installing zshnip"
 
     sleep 3
@@ -93,7 +97,7 @@ play-banner () {
     message "'  * Reduce the number of mistakes you make'"
     sleep 2
     message "'  * Allow you to do more complicated things'"
-    sleep 2
+    sleep 3
     message "'  * All without...'"
     message
 
