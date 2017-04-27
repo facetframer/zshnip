@@ -4,8 +4,7 @@ A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as
 
 ## Presentation
 
-![asciicast](https://asciinema.org/a/3fz3tnk2turajry6m8rpyq4j4.png)
-
+[![asciicast](https://asciinema.org/a/clqz3z43ct1cq7l1i2ocmtvdd.png)](https://asciinema.org/a/clqz3z43ct1cq7l1i2ocmtvdd)
 [Gallery of features](GALLERY.md) (animated gifs)
 
 # Attribution
