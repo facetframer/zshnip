@@ -136,7 +136,7 @@ play-attribution () {
     message ""
     message ""
     message "'Adapted from 'willghatch\'s'  '"
-    message "'         -- https://github.com/willghatch/zsh-snippets '"
+    message "'         https://github.com/willghatch/zsh-snippets '"
     message "'  (public domain) -- Adapted from code in forums'"
     # message "15"
     # message "16"
@@ -153,7 +153,8 @@ play-attribution () {
 play-introduction-text () {
     message "'Zshnip extends zsh by defining *snippets*: '"
     sleep 2
-    message "blocks of text that you can quickly paste into your shell."
+    message "blocks of text that you can quickly paste"
+    message "into your shell."
     message ""
 
     sleep 3
@@ -188,7 +189,8 @@ play-keybindings () {
 
 play-define-as-you-go () {
     sleep 2
-    message "The distinguishing feature of zshnip is that you can define snippets as you go:"
+    message "The distinguishing feature of zshnip is that"
+    message "you can define snippets as you go:"
     sleep 2
     run "clear"
     run-type 1 "echo zs"
@@ -283,10 +285,6 @@ play-examples () {
     tab
     sleep 1
     run-type 1 "zsh "
-    sleep 1
-    run-word "l"
-    sleep 1
-    tab
     sleep 1
     run
     sleep 1

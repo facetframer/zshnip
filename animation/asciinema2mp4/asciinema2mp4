@@ -1,0 +1,123 @@
+#! /usr/bin/env bash
+
+# Released into the Public Domain by tav <tav@espians.com>
+
+# Halt on error.
+set -e
+
+readonly program="$(basename "${0}")"
+readonly rundir="$(cd "$(dirname "${0}")" && pwd -P)"
+readonly tempdir="$(mktemp -d -t asciinema2gif.XXXX)"
+readonly asciinema_api='https://asciinema.org/api/asciicasts'
+
+# Check for dependencies.
+depends_on() {
+  readonly local all_deps=("${@}")
+  local missing_deps=()
+
+  for dep in "${all_deps[@]}"; do
+    if ! command -v "${dep}" &>/dev/null; then
+      missing_deps+=("${dep}")
+    fi
+  done
+
+  if [[ "${#missing_deps[@]}" -gt 0 ]]; then
+    tput setaf 1
+    echo -e '\nThis script has unmet dependencies. You need to install these first:'
+    printf '  %s\n' "${missing_deps[@]}"
+    tput sgr0
+    exit 1
+  fi
+}
+
+depends_on convert gifsicle phantomjs
+
+# Instructions and option flags.
+function syntax_error {
+  echo "${program}: ${1}" >&2
+  echo "Try \`${program} --help\` for more information." >&2
+  exit 1
+}
+
+function usage {
+  echo "
+    usage: ${program} [options] <asciinema_id|asciinema_api_url>
+
+    options:
+      -s <size>, --size <size>      One of 'small', 'medium', 'big'
+      -p <speed>, --speed <speed>   Any integer (whole number) to multiply regular speed by
+      -t <theme>, --theme <theme>   One of 'asciinema', 'tango', 'solarized-dark', 'solarized-light', 'monokai'
+      -o <file>, --output <file>    File to write to (defaults to 'asciicast.gif' in current directory)
+      -h, --help                    Show this help.
+  " | sed -E 's/^ {4}//'
+}
+
+while [[ "${1}" ]]; do
+  case "${1}" in
+    -h | --help)
+      usage
+      exit 0
+      ;;
+    -s | --size)
+      asciinema_options="${asciinema_options}?size=${2}"
+      shift
+      ;;
+    -p | --speed)
+      asciinema_options="${asciinema_options}?speed=${2}"
+      shift
+      ;;
+    -t | --theme)
+      asciinema_options="${asciinema_options}?theme=${2}"
+      shift
+      ;;
+    -o | --output)
+      output_file="${2}"
+      shift
+      ;;
+    -*)
+      syntax_error "unrecognized option: ${1}"
+      ;;
+    *)
+      break
+      ;;
+  esac
+  shift
+done
+
+# Show instructions when no arguments or more than one is given.
+if [[ -z "${1}" ]] || [[ -n "${2}" ]]; then
+  usage
+  exit 1
+elif [[ "${1}" =~ ^[[:alnum:]]+$ ]] && curl --output /dev/null --silent --head --fail "${asciinema_api}/${1}"; then
+  # If only digits are given, use default asciinema API URL.
+  asciinema_url="${asciinema_api}/${1}"
+else
+  asciinema_url="${1}"
+fi
+
+# Show warning if a URL not containing '/api/asciicasts/' is given
+if [[ "${asciinema_url}" != *'/api/asciicasts/'* ]]; then
+  echo -e "\n$(tput setaf 1)Wrong URL format. See https://github.com/tav/asciinema2gif#url-format.$(tput sgr0)\n"
+  exit 1
+fi
+
+# Correct API call in case more than one option was used, and set final URL.
+asciinema_options="$(sed 's/?/\&/g;s/&/?/1' <<< "${asciinema_options}")"
+asciinema_url="${asciinema_url}${asciinema_options}"
+
+# Default to current output file, if not explicitly set.
+[[ -z "${output_file}" ]] && output_file="${PWD}/asciicast.gif"
+
+# Start the process.
+cd "${tempdir}"
+phantomjs --ssl-protocol=any "${rundir}/render.js" "${asciinema_url}"
+
+echo '>> Generating mp4'
+
+ls frames
+ffmpeg -r 30 -f image2  -i frames/%08d.png asciicast.mp4
+
+
+cd - >/dev/null
+mv "${tempdir}/asciicast.mp4" "${output_file}"
+echo ">> Generated in: ${output_file}"

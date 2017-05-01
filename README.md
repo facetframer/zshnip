@@ -4,7 +4,8 @@ A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as
 
 ## Presentation
 
-[![asciicast](https://asciinema.org/a/clqz3z43ct1cq7l1i2ocmtvdd.png)](https://asciinema.org/a/clqz3z43ct1cq7l1i2ocmtvdd)
+[![Youtube introduction](https://img.youtube.com/vi/2lkisDF__qo/0.jpg)](https://www.youtube.com/watch?v=2lkisDF__qo)
+
 [Gallery of features](GALLERY.md) (animated gifs)
 
 # Attribution
@@ -12,6 +13,8 @@ A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as
 This is an extended version of William G Hatch's (willghatch@gmail.com)
 [original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on various forums.
 The define-as-you-go features were added by facet@facetframer.com.
+
+Code for rendering the presentation to mp4 is taken for `asciinema2gif` by tav.
 
 # Similar projects
 
