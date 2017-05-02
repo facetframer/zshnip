@@ -7,8 +7,7 @@
 
 zshnip_should_log= # non-empty to log
 
-snippets_file=~/.zshnip
-#snippet_edit_func=snippet-editor-edit
+zshnip_snippets_file=~/.zshnip
 zshnip_edit_func=zshnip-shell-edit
 
 set -A _zshnip_defining # Stack of snippets that we are defining
@@ -106,8 +105,8 @@ zle -N zshnip-shell-finished
 
 zshnip-source () {
     # Reload the snippets file
-    if [ -f "$snippets_file" ]; then
-        source "$snippets_file"
+    if [ -f "$zshnip_snippets_file" ]; then
+        source "$zshnip_snippets_file"
     fi;
 }
 
@@ -119,7 +118,7 @@ zshnip-write () {
     _zshnip-log "Saving snippet '$name' -> '$content'"
 
     escaped_content=$(echo "$content" | sed "s/'/\\\\'/g" )
-    echo zshnip-add "$name" $'$\''"$escaped_content""'" >> $snippets_file
+    echo zshnip-add "$name" $'$\''"$escaped_content""'" >> "$zshnip_snippets_file"
 }
 
 zshnip-expand() {
