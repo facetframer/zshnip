@@ -14,7 +14,7 @@ This is an extended version of William G Hatch's (willghatch@gmail.com)
 [original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on various forums.
 The define-as-you-go features were added by facet@facetframer.com.
 
-Code for rendering the presentation to mp4 is taken for `asciinema2gif` by tav.
+Code for rendering the presentation to mp4 is taken for [asciinema2gif](https://github.com/tav/asciinema2gif) by tav (public domain).
 
 # Similar projects
 
