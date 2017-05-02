@@ -4,7 +4,7 @@
 
 Using `zshnip-expand-or-edit`.
 
-![Animation of expanding a snippet](animation/gallery-gifs/gallery-define.gif)
+![Animation of expanding a snippet](animation/gallery-gifs/gallery-expand.gif)
 
 ## Defining new snippets
 
