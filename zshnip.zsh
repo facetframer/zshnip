@@ -15,6 +15,8 @@ set -A _zshnip_previous_lbuffer # Stack contents of zle buffer
 set -A _zshnip_previous_rbuffer # Stack contents of zle buffer
 
 typeset -Ag snippets
+typeset -Ag snippet_cursor_points
+
 
 _zshnip-log() {
     if [ -n "${zshnip_should_log:-}" ]; then
@@ -30,8 +32,9 @@ _zshnip-warn() {
 _zshnip-log "Starting zshnip"
 
 zshnip-add() {
-    # zshnip-add <key> <expansion>
+    # zshnip-add <key> <expansion> [<location>]
     snippets[$1]="$2"
+    snippet_cursor_points[$1]="${3:-}"
 }
 
 zshnip-editor-edit() {
@@ -61,6 +64,15 @@ zshnip-shell-edit() {
 
     _zshnip-log "Editing $snippet_match"
     BUFFER="$snippets[$1]"
+
+    cursor_position="${snippet_cursor_points[$snippet_match]:-}"
+
+    if [ -n "$cursor_position" ]; then
+        CURSOR=$(( $#BUFFER - $cursor_position ))
+    else
+        CURSOR=$#BUFFER
+    fi;
+
     PROMPT="$PROMPT DEFINING SNIPPET: $1 > "
     zle reset-prompt
     zle -A accept-line _zshnip_old_accept_line # Save previous accept line function
@@ -118,16 +130,19 @@ zshnip-write () {
 
     _zshnip-log "Saving snippet '$name' -> '$content'"
 
+    cursor_position=$(( $#BUFFER - $CURSOR ))
     escaped_content=$(echo "$content" | sed "s/'/\\\\'/g" )
-    echo zshnip-add "$name" $'$\''"$escaped_content""'" >> "$zshnip_snippets_file"
+    echo zshnip-add "$name" $'$\''"$escaped_content""'" "$cursor_position" >> "$zshnip_snippets_file"
 }
 
 zshnip-expand() {
     emulate -L zsh
+    local cursor_position=
     setopt extendedglob
     _zshnip-parse-snippet
     LBUFFER=$snippet_new_lbuffer
     LBUFFER+="${snippets[$snippet_match]:-$snippet_match}"
+
 }
 zle -N zshnip-expand
 
@@ -196,8 +211,15 @@ _zshnip-expand () {
     _zshnip-log "Buffer before expansion ${LBUFFER}_${RBUFFER}"
     LBUFFER=${LBUFFER%$snippet}
     LBUFFER+=${snippets[$snippet]:-$snippet}
+
+    cursor_position="${snippet_cursor_points[$snippet_match]:-}"
+    if [ -n "$cursor_position" ]; then
+       CURSOR=$(( $#LBUFFER - $cursor_position ))
+    fi;
+
     _zshnip_last_expanded=$snippet
     _zshnip-log "Buffer after expansion ${LBUFFER}_${RBUFFER}"
+
 }
 
 zshnip-enable-log() {
