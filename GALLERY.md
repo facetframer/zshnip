@@ -23,3 +23,10 @@ Using `zshnip-edit-and-expand`
 Using `zshnip-expand-or-edit`
 
 ![Animation of nesting snippet definitions](animation/gallery-gifs/gallery-nest.gif)
+
+## Place holders: remembering where the point is
+
+When you define or edit a snippet, the location of the cursor is remembered and restored.
+This can be useful when you need to insert text into the snippet after expanding.
+
+![Animation of restoring snippet location](animation/gallery-gifs/gallery-insertion-point.gif)
