@@ -104,7 +104,8 @@ To run these tests run `animation/record-gallery.sh`
 
 # Similar projects
 
-https://github.com/1ambda/zsh-snippets is another extension of willghatch's library.
+- https://github.com/1ambda/zsh-snippets is another extension of willghatch's library.
+- I am an extensive user of [yasnippet](https://github.com/joaotavora/yasnippet) in emacs. This will have without doubt influenced features in this project.
 
 # License
 
