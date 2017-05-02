@@ -13,10 +13,10 @@ set -o pipefail
 here="$(dirname ${BASH_SOURCE[0]})"
 cd "$here"
 
-animations=$(ls gallery-animations)
+animations=$(ls gallery-animations | grep -v GENERATED)
 
 { for animation in $animations; do
     echo -n "$animation "
     url=$(asciinema upload "gallery-animations/$animation" | sed 's_/a/_/api/asciicasts/_')
-    asciinema2gif -o $here/gallery-gifs/${animation%.json}.gif "$url" 
+    asciinema2gif -o $here/gallery-gifs/${animation%.json}.gif "$url"
 done }  > animation-locations.generated
