@@ -139,6 +139,7 @@ _zshnip-edit() {
 }
 
 zshnip-expand-or-edit() {
+    zshnip-source
     if [ -z "$BUFFER" ]; then
         # Useful binding to re-edit the last snippet if it was not right
         _zshnip-edit "$_zshnip_last_expanded"
@@ -165,6 +166,7 @@ zshnip-save-last() {
 
 zshnip-edit-and-expand() {
     emulate -L zsh
+    zshnip-source
 
     if [ -z "$BUFFER" ]; then
         # Useful binding to re-edit the last snippet if it was not right
