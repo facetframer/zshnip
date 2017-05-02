@@ -72,6 +72,30 @@ Using snippets have some benefits
  - You can verify that snippets expand to what you want before running them (useful if you have a *lot* of snippets)
  - The define-as-you-go features have [various benefits](define-as-you-go.md).
 
+# Some compelling use cases
+
+```
+gs -> git status
+mh -> --help
+mf -> --force
+g -> | grep -i
+gv -> | grep -v
+sda -> sed -n '//,$ p'
+gap -> git add -p
+o -> $(!!)
+lm1 -> | tail -n 1
+xarm -> xargs -n 1 kill
+xarmp -> xargs -p -n 1 kill
+sso -> | grep -o ''
+sss -> | grep -P '^'
+w1 -> | awk '{ print $1 }'
+wm1 -> | rev | awk ' { print $1 }'
+si -> sudo apt-get install
+sa -> sudo !!
+ag -> !! | grep
+```
+
+
 # Testing
 
 The code for generating the [feature gallery](GALLERY.md) also performs consistency testing.
