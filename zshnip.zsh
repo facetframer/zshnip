@@ -96,9 +96,10 @@ _zshnip-shell-edit-accept-line() {
     _zshnip-edit-finished-callback "$defined"
 
     if [[ "0" == "${#_zshnip_defining}" ]]; then
-
         zle -A _zshnip_old_accept_line accept-line
         _zshnip-log "Restoring accept-line: ${widgets[accept-line]}"
+    else
+        _zshnip-log "Not restoring accept-line. Still defining: ${(kv)_zshnip_defining}"
     fi;
 }
 zle -N zshnip-shell-finished
@@ -134,7 +135,6 @@ _zshnip-edit() {
     local editor snippet
     editor=$1
     snippet=$2
-    _zshnip_defining+=( $snippet )
     $zshnip_edit_func $editor _zshnip-edit-finished-callback
 }
 
