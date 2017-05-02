@@ -61,7 +61,7 @@ Defining snippets can be problematic:
 1. One only knows what snippets you want while you are carrying out a task, not later.
 1. Going to an editor to define a snippet can hijack another task.
 
-# Likely Questions: Can't you just this with aliases?
+# Can't you just use aliases?
 
 Certainly, you can even supports pipes etc in your aliases using global aliases (`alias -g g='| grep '`).
 You could also perhaps write a wrapper about `alias` to persist aliases and use something like
