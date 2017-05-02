@@ -1,0 +1,24 @@
+ZSH> echo -e 'hello\nworld'  | grep "^"
+hello
+world
+ZSH> echo -e 'hello\nworld'  | grep "^h"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

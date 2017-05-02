@@ -70,6 +70,12 @@ tab () {
     tmux -S "$TMUX" send-keys -t "$command_pane" $(echo -e '\ej')
 }
 
+back-key () {
+    # Backwards key
+    tmux -S "$TMUX" send-keys -t "$command_pane" $(echo -e '\e[D')
+
+}
+
 edit-key () {
     tmux -S "$TMUX" send-keys -t "$command_pane" $(echo -e '\ee')
 }
