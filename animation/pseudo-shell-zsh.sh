@@ -42,7 +42,7 @@ donothing () {
 
 zle -N accept-line donothing
 
-snippets_file=$config/snippets
+zshnip_snippets_file=$config/snippets
 bindkey '\ej' zshnip-expand-or-edit
 EOF
 

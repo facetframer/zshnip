@@ -41,7 +41,7 @@ zshnip-add w2 $' | awk \'{ print \$2 } \' '
 zshnip-add xak $' | xargs -n 1 kill -9 '
 zshnip-add zp $'\$\(ps -ef | fzf-tmux | awk \'{ print \$2 }\'\)'
 
-snippets_file=$config/snippets
+zshnip_snippets_file=$config/snippets
 bindkey '\ej' zshnip-expand-or-edit
 bindkey '\ee' zshnip-edit-and-expand
 bindkey -s '\er' 'source ../zshnip.zsh\n'
