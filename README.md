@@ -41,17 +41,26 @@ Raw installation
     echo "source zshnip/zshnip.plugin.zsh" >> ~/.zshrc
 ```
 
-Manually create key-bindings for defining snippets
+Manually create key-bindings for defining snippets.
+(use different bindings if desired)
 
 ```
-bindkey '\ej' zshnip-expand-or-edit
-bindkey '\ee' zshnip-edit-and-expand
+bindkey '\ej' zshnip-expand-or-edit # Alt-j
+bindkey '\ee' zshnip-edit-and-expand # Alt-e
 ```
 
 # Usage
 
-Type your snippet alias, run `M-x zshnip-expand-or-edit`, then type what your new snippet should be.
-After this your snippet is defined and next time you run `zshnip-expand-or-edit` it will use your new definition.
+After having installed zshnip and defined key-bindings (see the section above):
+
+- Type you snippet alias (e.g. `gs`)
+- Run `zshnip-expand-or-edit` with `Alt-J` (or your own keybinding)
+- A prompt will appear within your shell to define your snippet
+- Type your snippet (e.g. `git status`) and press `ENTER`.
+- Your snippet will have expanded.
+- After this, when you press `Alt-J` after your snippet alias (e.g. `gs`) this expansion will be used.
+
+There is a concise walk through of this in [this section of the presentation](https://www.youtube.com/watch?v=6bHHKTBNhb0&t=35)
 
 # Motivation
 
