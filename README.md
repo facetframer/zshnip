@@ -37,8 +37,9 @@ Using *zgen*
 Raw installation
 
 ```
+    cd ~
     git clone https://github.com/facetframer/zshnip.git
-    echo "source zshnip/zshnip.plugin.zsh" >> ~/.zshrc
+    echo "source zshnip/zshnip.zsh" >> ~/.zshrc
 ```
 
 Manually create key-bindings for defining snippets.
