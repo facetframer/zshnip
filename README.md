@@ -49,8 +49,8 @@ Manually create key-bindings for defining snippets.
 (you can use different bindings if desired)
 
 ```
-bindkey '\ej' zshnip-expand-or-edit # Alt-j
-bindkey '\ee' zshnip-edit-and-expand # Alt-e
+bindkey '\ej' zshnip-expand-or-edit # Alt-J
+bindkey '\ee' zshnip-edit-and-expand # Alt-E
 ```
 
 # Usage
