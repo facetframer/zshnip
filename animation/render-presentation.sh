@@ -11,5 +11,11 @@ cd "$here"
 upload=$(asciinema upload presentation.json)
 api_url=$(echo "$upload" | sed 's_/a/_/api/asciicasts/_')
 
+# Without this delay the api appears to not serve
+#   use size information correctly (I think there is a race
+#   condition of the server)
+sleep 10;
+
+
 cd asciinema2mp4
-./asciinema2mp4 -o ../presentation.mp4 "$api_url"
+./asciinema2mp4 --size big -o ../presentation.mp4 "$api_url"

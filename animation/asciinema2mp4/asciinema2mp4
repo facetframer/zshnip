@@ -115,7 +115,7 @@ phantomjs --ssl-protocol=any "${rundir}/render.js" "${asciinema_url}"
 echo '>> Generating mp4'
 
 ls frames
-ffmpeg -r 30 -f image2  -i frames/%08d.png asciicast.mp4
+ffmpeg -r 20 -f image2  -i frames/%08d.png asciicast.mp4
 
 
 cd - >/dev/null

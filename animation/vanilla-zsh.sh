@@ -40,6 +40,7 @@ zshnip-add xa $' | xargs '
 zshnip-add w2 $' | awk \'{ print \$2 } \' '
 zshnip-add xak $' | xargs -n 1 kill -9 '
 zshnip-add zp $'\$\(ps -ef | fzf-tmux | awk \'{ print \$2 }\'\)'
+zshnip-add arguments $'name= ; echo "Hello \$name. Sometimes, \$name, one must repeat an argument."' 69
 
 zshnip_snippets_file=$config/snippets
 bindkey '\ej' zshnip-expand-or-edit

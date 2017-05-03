@@ -74,11 +74,11 @@ play-interactive-banner () {
     run-more "*"
 
     run
-    sleep 0.5
+    sleep 0.2
     run
-    sleep 0.5
+    sleep 0.2
     run
-    sleep 0.5
+    sleep 0.2
     run "                * apart from installing zshnip"
 
     sleep 3
@@ -130,20 +130,12 @@ play-attribution () {
     message ""
     message ""
     message ""
-    message "'By facet (http://www.facetframer.com/'"
-    message "'         -- facet@facetframer.com)'"
+    message "'By facet (http://www.facetframer.com/ --  facet@facetframer.com)'"
     message "'    Copyright 2017 -- Licensed under LGPLv3'"
     message ""
     message ""
-    message "'Adapted from 'willghatch\'s'  '"
-    message "'         https://github.com/willghatch/zsh-snippets '"
+    message "'Adapted from 'willghatch\'s' https://github.com/willghatch/zsh-snippets '"
     message "'  (public domain) -- Adapted from code in forums'"
-    # message "15"
-    # message "16"
-    # message "17"
-    # message "18"
-    # message "19"
-    # message "20"
     sleep 7
 
     clear-messages
@@ -151,16 +143,16 @@ play-attribution () {
 }
 
 play-introduction-text () {
-    message "'Zshnip extends zsh by defining *snippets*: '"
+    message-more "'Zshnip extends zsh by defining *snippets*: '"
     sleep 2
-    message "blocks of text that you can quickly paste"
-    message "into your shell."
+    message "blocks of text that "
+    message "you can quickly paste into your shell."
     message ""
 
     sleep 3
 
-    message "'You expand your snippet by running'"
-    message "'zshnip-expand-or-edit (using M-x)'"
+    message "'You expand your snippet by running zshnip-expand-or-edit'"
+    message "'(using M-x)'"
     sleep 2
 }
 
@@ -189,8 +181,8 @@ play-keybindings () {
 
 play-define-as-you-go () {
     sleep 2
-    message "The distinguishing feature of zshnip is that"
-    message "you can define snippets as you go:"
+    message "The distinguishing feature of zshnip is that you can define"
+    message "snippets as you go:"
     sleep 2
     run "clear"
     run-type 1 "echo zs"
@@ -241,15 +233,13 @@ play-benefits () {
     sleep 2
     message "'   You need to remember less -- just guess'"
     sleep 1
-    message "'        If you are wrong the new binding'"
-    message "'         is probably better'"
+    message "'        If you are wrong the new binding is probably better'"
     sleep 1;
     message "'   You actually get around to defining snippets'"
     sleep 2
     message "'   Defining snippets is faster'"
     sleep 2
-    message "'        No need to find configurations files'"
-    message "'        and open them'"
+    message "'        No need to find configurations files and open them'"
     sleep 2
     message "'   Your capacity to go down an automation rabbit-hole'"
     message "'   is reduced'"
@@ -269,18 +259,18 @@ play-examples () {
     message "Pagers..."
     message ""
     sleep 1
-    run-word "ps -ef l"
+    run-type 1 "ps -ef l"
     sleep 1
     tab
     sleep 1
     run
     sleep 2
-    run-word "q"
+    run-type 1 "q"
     sleep 1
     message "Grepping..."
     message ""
     sleep 1
-    run-word "ps -ef g"
+    run-type 1 "ps -ef g"
     sleep 1
     tab
     sleep 1
@@ -295,7 +285,7 @@ play-examples () {
     message "Git ..."
     message ""
     run "clear"
-    run-word "gs"
+    run-type 1 "gs"
     sleep 2
     tab
     sleep 2
@@ -306,7 +296,7 @@ play-examples () {
     message ""
 
     sleep 1
-    run-word "ps -ef w2"
+    run-type 1 "ps -ef w2"
     sleep 1
     tab
     run-word " "
@@ -324,35 +314,47 @@ play-examples () {
     message ""
     run "cat &"
     sleep 2
-    run-word "ps -ef g"
+    run-type 1 "ps -ef g"
     tab
     sleep 1
-    run-word "cat "
+    run-type 1 "cat "
     sleep 1
-    run-word "w2"
-    sleep 1
-    tab
-    sleep 1
-    run
-    sleep 2
-
-    run-word "!! xak"
+    run-type 1 "w2"
     sleep 1
     tab
     sleep 1
     run
     sleep 2
 
-    message "'(Pseudo)completion (using fzf) ...'"
+    run-type 1 "!! xak"
+    sleep 1
+    tab
+    sleep 1
+    run
+    sleep 2
+
+    message "'(Pseudo)completion (using fzf)...'"
     message ""
     run "clear"
     sleep 1
-    run-word "kill zp"
+    run-type 1 "kill zp"
     sleep 1
     tab
     sleep 1
     run-word "$(echo -e '\x03')"
+
+    sleep 3
+
+    message "'Snippet arguments...'"
     message ""
+    run "clear"
+    sleep 1
+    run-type 1 "arguments"
+    sleep 1
+    tab
+    sleep 1
+    run-type 1 "Jim"
+    run
 
     sleep 3
     clear-messages
@@ -360,16 +362,40 @@ play-examples () {
 
 play-credits () {
     message "'To download go here:'"
+    sleep 1
     message "'    https://github.com/facetframer/zshnip'"
+    sleep 1
     message ''
+    sleep 1
     message "'For more about me:'"
+    sleep 1
     message "'    Facet (facet@facetframer.com)'"
+    sleep 1
     message "'    @facetframer'"
+    sleep 1
     message "'    http://www.facetframer.com/'"
+    sleep 1
     message
+    sleep 1
     message "For more about willghatch"
+    sleep 1
     message "'    http://willghatch.net/blog/'"
-    sleep 10
+    sleep 1
+    message-more '.'
+    sleep 1
+
+    message-more '.'
+    sleep 1
+    message-more '.'
+    sleep 1
+    message-more '.'
+    sleep 1
+    message-more '.'
+    sleep 1
+    message-more '.'
+    sleep 1
+    message-more '.'
+    sleep 1
 }
 
 close-shell () {
@@ -383,6 +409,7 @@ tmux -S $TMUX select-window -t pseudoshell
 animate-set-command-pane "pseudoshell.0"
 sleep 1;
 play-interactive-banner
+
 sleep 1;
 spawn-narration-window;
 
@@ -398,6 +425,7 @@ play-examples
 close-shell
 play-credits
 
-sleep 1
+sleep 15
+clear
 
 animation-finished
