@@ -88,6 +88,9 @@ Using snippets have some benefits
 
 # Some compelling use cases
 
+Here is a list some of the snippets the maintainer uses on a regular basis.
+These are not built-in, and you might want to phrase them differently, but might act as inspiration.
+
 ```
 gs -> git status
 mh -> --help
