@@ -18,6 +18,7 @@ Code for rendering the presentation to mp4 is taken for [asciinema2gif](https://
 
 # Installation
 
+## Step 1: Get the code
 Using *zplug*
 
 ```
@@ -42,8 +43,10 @@ Raw installation
     echo "source zshnip/zshnip.zsh" >> ~/.zshrc
 ```
 
+## Step 2: Create some key-bindings
+
 Manually create key-bindings for defining snippets.
-(use different bindings if desired)
+(you can use different bindings if desired)
 
 ```
 bindkey '\ej' zshnip-expand-or-edit # Alt-j
