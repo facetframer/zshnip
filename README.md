@@ -58,7 +58,7 @@ bindkey '\ee' zshnip-edit-and-expand # Alt-e
 After having installed zshnip and defined key-bindings (see the section above):
 
 - Type you snippet alias (e.g. `gs`)
-- Run `zshnip-expand-or-edit` with `Alt-J` (or your own keybinding)
+- Run `zshnip-expand-or-edit` with `Alt-J` (or your own key-binding)
 - A prompt will appear within your shell to define your snippet
 - Type your snippet (e.g. `git status`) and press `ENTER`.
 - Your snippet will have expanded.
