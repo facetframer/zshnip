@@ -4,7 +4,7 @@ A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as
 
 ## Presentation
 
-[![Youtube introduction](https://img.youtube.com/vi/2lkisDF__qo/0.jpg)](https://www.youtube.com/watch?v=2lkisDF__qo)
+[![Youtube introduction](https://img.youtube.com/vi/6bHHKTBNhb0/0.jpg)](https://www.youtube.com/watch?v=6bHHKTBNhb0)
 
 [Gallery of features](GALLERY.md) (animated gifs)
 
