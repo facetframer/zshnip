@@ -55,6 +55,8 @@ bindkey '\ee' zshnip-edit-and-expand # Alt-E
 
 # Usage
 
+There is a concise walk-through of using zshnip in [this section of the presentation](https://www.youtube.com/watch?v=6bHHKTBNhb0&t=35).
+
 After having installed zshnip and defined key-bindings (see the section above):
 
 - Type your snippet alias (e.g. `gs`)
@@ -64,7 +66,6 @@ After having installed zshnip and defined key-bindings (see the section above):
 - Your snippet will have expanded.
 - After this, when you press `Alt-J` after your snippet alias (e.g. `gs`) this expansion will be used.
 
-There is a concise walk through of this in [this section of the presentation](https://www.youtube.com/watch?v=6bHHKTBNhb0&t=35)
 
 # Motivation
 
