@@ -175,7 +175,7 @@ zshnip-save-last() {
     # Save the last command to a snippet
     name="$1"
     content="$(history | tail -n 1 | head -n 1 | cut -b 8-)"
-    snippet-write "$name" "$content"
+    zshnip-write "$name" "$content"
     zshnip-source
 }
 
