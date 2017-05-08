@@ -2,7 +2,9 @@
 
 A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as you go](https://facetframer.com/dayg).
 
-## Presentation
+## Concise introductions:
+
+[This 20 second animated gif] (https://github.com/facetframer/zshnip/blob/master/animation/gallery-gifs/gallery-define.gif) gives a good summary of why you might want to use zshnip.
 
 [![Youtube introduction](https://img.youtube.com/vi/6bHHKTBNhb0/0.jpg)](https://www.youtube.com/watch?v=6bHHKTBNhb0)
 
