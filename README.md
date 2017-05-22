@@ -13,7 +13,7 @@ A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as
 # Attribution
 
 This is an extended version of William G Hatch's (willghatch@gmail.com)
-[original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on various forums.
+[original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on forums.
 The define-as-you-go features were added by facet@facetframer.com.
 
 Code for rendering the presentation to mp4 is taken for [asciinema2gif](https://github.com/tav/asciinema2gif) by tav (public domain).
@@ -80,7 +80,7 @@ Defining snippets can be problematic:
 # Can't you just use aliases?
 
 Certainly, you can even supports pipes etc in your aliases using global aliases (`alias -g g='| grep '`).
-You could also perhaps write a wrapper about `alias` to persist aliases and use something like
+You could also write a wrapper about `alias` to persist aliases and use something like
 https://github.com/jarmo/expand-aliases-oh-my-zsh to expand them.
 
 Using snippets have some benefits
@@ -90,8 +90,8 @@ Using snippets have some benefits
 
 # Some compelling use cases
 
-Here is a list some of the snippets the maintainer uses on a regular basis.
-These are not built-in, and you might want to phrase them differently, but might act as inspiration.
+Here is a list of the snippets the maintainer uses on a regular basis.
+These are not built-in, and you might want to phrase them differently, but they could act as inspiration.
 
 ```
 gs -> git status
