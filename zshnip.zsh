@@ -253,6 +253,16 @@ _zshnip-do-list(){
 }
 
 zshnip-list(){
-    _zshnip-do-list inZLE
+    for k in "${(@k)snippets}"; do
+        echo "$k $snippets[$k]"
+    done | sort
 }
-zle -N zshnip-list
+
+zshnip-fzf-insert() {
+    local snippet
+    snippet=$(zshnip-list | fzf | cut -d ' ' -f 1)
+    LBUFFER="$LBUFFER$snippet"
+    _zshnip-expand "$snippet"
+}
+zle -N zshnip-fzf-insert
+
