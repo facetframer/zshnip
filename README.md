@@ -4,7 +4,7 @@ A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as
 
 ## Concise introductions:
 
-[This 20 second animated gif] (https://github.com/facetframer/zshnip/blob/master/animation/gallery-gifs/gallery-define.gif) gives a good summary of why you might want to use zshnip.
+[This 20 second animated gif](https://github.com/facetframer/zshnip/blob/master/animation/gallery-gifs/gallery-define.gif) gives a good summary of why you might want to use zshnip.
 
 [![Youtube introduction](https://img.youtube.com/vi/6bHHKTBNhb0/0.jpg)](https://www.youtube.com/watch?v=6bHHKTBNhb0)
 
@@ -16,7 +16,7 @@ This is an extended version of William G Hatch's (willghatch@gmail.com)
 [original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on forums.
 The define-as-you-go features were added by facet@facetframer.com.
 
-Code for rendering the presentation to mp4 is taken for [asciinema2gif](https://github.com/tav/asciinema2gif) by tav (public domain).
+Code for rendering the presentation to MP4 is taken from [asciinema2gif](https://github.com/tav/asciinema2gif) by tav (public domain).
 
 # Installation
 
