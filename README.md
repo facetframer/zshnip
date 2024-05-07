@@ -1,6 +1,14 @@
 # Zshnip
-
 A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as you go](https://facetframer.com/dayg).
+
+| Features | zsh alias | global alias | zsh-snippets | zshnip |
+| --- | --- | --- | --- | --- |
+| Snippets automatically saved | :x: | :x: | :x: | :white_check_mark: |
+| Forgot snippet name 😧 | :grimacing: | :grimacing: | :grimacing: | :relaxed: (recreate with new name because it's probably easier to remember) |
+| Remembers cursor position | :x: | :x: | :x: | :white_check_mark: (useful for commands with pipes "|") |
+| How snippets are defined |  ⏲️ (editor) |  ⏲️ (editor) |  ⏲️ (editor) | :relaxed: at shell itself |
+| Tweak command before run | :x: | :x: | :x: | ✅ |
+| Create snippets while creating snippets | :x: | :x: | :x: | ✅ |
 
 ## Concise introductions
 This [gallery of features](GALLERY.md) provides animated GIFs that document many features.
@@ -11,15 +19,16 @@ This [gallery of features](GALLERY.md) provides animated GIFs that document many
 
 
 # Attribution
-
 This is an extended version of William G Hatch's (willghatch@gmail.com)
 [original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on forums.
 The define-as-you-go features were added by facet@facetframer.com.
 
 Code for rendering the presentation to MP4 is taken from [asciinema2gif](https://github.com/tav/asciinema2gif) by tav (public domain).
 
-# Installation
 
+
+
+# Installation
 ## Step 1: Get the code
 Using *zplug*
 
