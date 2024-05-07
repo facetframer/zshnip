@@ -4,9 +4,9 @@ A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as
 | Features | zsh alias | global alias | zsh-snippets | zshnip |
 | --- | --- | --- | --- | --- |
 | Snippets automatically saved | :x: | :x: | :x: | :white_check_mark: |
-| Forgot snippet name 😧 | :grimacing: | :grimacing: | :grimacing: | :relaxed: (recreate with new name because it's probably easier to remember) |
+| Forgot snippet name 😧 | :grimacing: | :grimacing: | :grimacing: | :smile: (just guess - new name is probably simpler) |
 | Remembers cursor position | :x: | :x: | :x: | :white_check_mark: (useful for commands with pipes "|") |
-| How snippets are defined |  ⏲️ (editor) |  ⏲️ (editor) |  ⏲️ (editor) | :relaxed: at shell itself |
+| How snippets are defined |  ⏲️ (editor) |  ⏲️ (editor) |  ⏲️ (editor) | :smile: at shell itself |
 | Tweak command before run | :x: | :x: | :x: | ✅ |
 | Create snippets while creating snippets | :x: | :x: | :x: | ✅ |
 
