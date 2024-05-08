@@ -1,13 +1,18 @@
 # Zshnip
-A snippet system for [zsh](http://zsh.sourceforge.net/). Create new [snippets as you go](https://facetframer.com/dayg).
+A snippet framework for [zsh](http://zsh.sourceforge.net/). Create new [snippets as you go](define-as-you-go.md). Type snippet alias, press key, expand snippet - if snippet did not exist you are prompted to create one and can then carry on editing.
 
-| Features | zsh alias | global alias | zsh-snippets | zshnip |
+This framework makes creating snippets low enough friction that actually do it.
+
+# Comparison with other approaches
+
+| Features | [zsh alias](https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/aliases.md) | global alias | zsh-snippets | zshnip |
 | --- | --- | --- | --- | --- |
+| Supports pipes | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Snippets automatically saved | :x: | :x: | :x: | :white_check_mark: |
-| Forgot snippet name 😧 | :grimacing: | :grimacing: | :grimacing: | :smile: (just guess - new name is probably simpler) |
+| Forgot snippet name 😧 | :grimacing: | :grimacing: | :grimacing: | :smile: (just guess and create a new snippet if wrong) |
 | Remembers cursor position | :x: | :x: | :x: | :white_check_mark: (useful for commands with pipes "|") |
-| How snippets are defined |  ⏲️ (editor) |  ⏲️ (editor) |  ⏲️ (editor) | :smile: at shell itself |
-| Tweak command before run | :x: | :x: | :x: | ✅ |
+| How snippets are defined |  With an editor |  editor |  editor | :smile: at shell itself :smile: |
+| Tweak command before run | :x: | :x: | :white_check_mark: | ✅ |
 | Create snippets while creating snippets | :x: | :x: | :x: | ✅ |
 
 ## Concise introductions
