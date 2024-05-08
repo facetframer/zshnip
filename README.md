@@ -5,7 +5,7 @@ This framework makes creating snippets low enough friction that actually do it.
 
 # Comparison with other approaches
 
-| Features | [zsh alias](https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/aliases.md) | global alias | zsh-snippets | zshnip |
+| Features | [zsh alias](https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/aliases.md) | [global alias](https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/aliases.md#global-aliases) | [zsh-snippets](https://github.com/willghatch/zsh-snippets) | zshnip |
 | --- | --- | --- | --- | --- |
 | Supports pipes | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Snippets automatically saved | :x: | :x: | :x: | :white_check_mark: |
@@ -15,7 +15,7 @@ This framework makes creating snippets low enough friction that actually do it.
 | Tweak command before run | :x: | :x: | :white_check_mark: | ✅ |
 | Create snippets while creating snippets | :x: | :x: | :x: | ✅ |
 
-## Concise introductions
+## Gallery
 This [gallery of features](GALLERY.md) provides animated GIFs that document many features.
 
 [This 20 second animated gif](https://github.com/facetframer/zshnip/blob/master/animation/gallery-gifs/gallery-define.gif) gives a good summary of why you might want to use zshnip.
@@ -30,21 +30,17 @@ The define-as-you-go features were added by facet@facetframer.com.
 
 Code for rendering the presentation to MP4 is taken from [asciinema2gif](https://github.com/tav/asciinema2gif) by tav (public domain).
 
-
-
-
 # Installation
 ## Step 1: Get the code
-Using *zplug*
+Using [zplug](https://github.com/zplug/zplug)
 
 ```
-    source /usr/share/zplug/init.zsh
     zplug facetframer/zshnip
     zplug install
     zplug load
 ```
 
-Using *zgen*
+Using [zgen](https://github.com/tarjoilija/zgen)
 
 ```
     zgen load facetframer/zshnip
@@ -55,8 +51,8 @@ Raw installation
 
 ```
     cd ~
-    git clone https://github.com/facetframer/zshnip.git
-    echo "source zshnip/zshnip.zsh" >> ~/.zshrc
+    git clone https://github.com/facetframer/zshnip.git .zshnip
+    source .zshnip/zshnip.zsh
 ```
 
 ## Step 2: Create some key-bindings
@@ -69,9 +65,9 @@ bindkey '\ej' zshnip-expand-or-edit # Alt-J
 bindkey '\ee' zshnip-edit-and-expand # Alt-E
 ```
 
-# Usage
+You will need to add the appropriate commands above to your `.zshrc` to reload at startup.
 
-There is a concise walk-through of using zshnip in [this section of the presentation](https://www.youtube.com/watch?v=6bHHKTBNhb0&t=35).
+# Usage
 
 After having installed zshnip and defined key-bindings (see the section above):
 
@@ -82,6 +78,7 @@ After having installed zshnip and defined key-bindings (see the section above):
 - Your snippet will have expanded.
 - After this, when you press `Alt-J` after your snippet alias (e.g. `gs`) this expansion will be used.
 
+See [this section of the presentation](https://www.youtube.com/watch?v=6bHHKTBNhb0&t=35).
 
 # Motivation
 
@@ -130,7 +127,6 @@ ag -> !! | grep
 
 
 # Testing
-
 The code for generating the [feature gallery](GALLERY.md) also performs consistency testing.
 Combining testing and generation of documentation like this has various benefits (see *doctest*).
 To run these tests run `animation/record-gallery.sh`
