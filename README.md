@@ -10,7 +10,7 @@ This framework makes creating snippets low enough friction that actually do it.
 | Supports pipes | :x: | :white_check_mark: | :white_check_mark: | :white_check_mark: |
 | Snippets automatically saved | :x: | :x: | :x: | :white_check_mark: |
 | Forgot snippet name 😧 | :grimacing: | :grimacing: | :grimacing: | :smile: (just guess and create a new snippet if wrong) |
-| Remembers cursor position | :x: | :x: | :x: | :white_check_mark: (useful for commands with pipes "|") |
+| Remembers cursor position | :x: | :x: | :x: | :white_check_mark: (useful for commands with pipes ) |
 | How snippets are defined |  With an editor |  editor |  editor | :smile: at shell itself :smile: |
 | Tweak command before run | :x: | :x: | :white_check_mark: | ✅ |
 | Create snippets while creating snippets | :x: | :x: | :x: | ✅ |
