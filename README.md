@@ -51,8 +51,8 @@ Raw installation
 
 ```
     cd ~
-    git clone https://github.com/facetframer/zshnip.git .zshnip
-    source .zshnip/zshnip.zsh
+    git clone https://github.com/facetframer/zshnip.git .zshnip-repo
+    source .zshnip-repo/zshnip.zsh
 ```
 
 ## Step 2: Create some key-bindings
