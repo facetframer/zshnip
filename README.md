@@ -3,7 +3,7 @@ A snippet framework for [zsh](http://zsh.sourceforge.net/). Create new [snippets
 
 This framework makes creating snippets low enough friction that actually do it.
 
-# Comparison with other approaches
+# Comparison
 
 | Features | [zsh alias](https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/aliases.md) | [global alias](https://github.com/rothgar/mastering-zsh/blob/master/docs/helpers/aliases.md#global-aliases) | [zsh-snippets](https://github.com/willghatch/zsh-snippets) | zshnip |
 | --- | --- | --- | --- | --- |
@@ -24,8 +24,8 @@ This [gallery of features](GALLERY.md) provides animated GIFs that document many
 
 
 # Attribution
-This is an extended version of William G Hatch's (willghatch@gmail.com)
-[original library](https://github.com/willghatch/zsh-snippets) that was influenced by code on forums.
+This library uses the same approach and incorporates some code from William G Hatch's (willghatch@gmail.com)
+[original library](https://github.com/willghatch/zsh-snippets) that was in turn influenced by code on forums.
 The define-as-you-go features were added by facet@facetframer.com.
 
 Code for rendering the presentation to MP4 is taken from [asciinema2gif](https://github.com/tav/asciinema2gif) by tav (public domain).
